@@ -24,21 +24,27 @@ struct SearchBar: View {
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     }
                 )
-            Button {
-                isEditing = false
-                text = ""
-                endEditing()
-            } label: {
-                Text("cancel")
-                    .foregroundColor(Color("TextColor"))
-                    .padding(.trailing, 8)
-                    .transition(.move(edge: .trailing))
-                    .animation(.default, value: 3)
+            if isEditing{
+                    Button {
+                        isEditing = false
+                        text = ""
+                        UIApplication.shared.endEditing()
+                    } label: {
+                        Text("cancel")
+                            .foregroundColor(Color("TextColor"))
+                            .padding(.trailing, 8)
+                            .transition(.move(edge: .trailing))
+                            .animation(.default, value: 3)
+                    }
+            
+                
             }
-
         }.onTapGesture {
             isEditing = true
         }
+        
+       
+        
     }
 }
 

@@ -14,6 +14,15 @@ struct SearchView: View {
         ScrollView {
             SearchBar(text: $text, isEditing: $inSearchMode)
                 .padding()
+            
+            ZStack{
+                if inSearchMode {
+                    UserListView()
+                }
+                else{
+                    PostGridView()
+                }
+            }
         }
     }
 }

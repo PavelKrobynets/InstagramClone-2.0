@@ -1,26 +1,26 @@
 //
-//  NotificationsView.swift
+//  UserListView.swift
 //  InstagramClone2
 //
-//  Created by mac on 14.12.2021.
+//  Created by Pavel Krobynets on 27.12.2021.
 //
 
 import SwiftUI
 
-struct NotificationsView: View {
+struct UserListView: View {
     var body: some View {
         ScrollView{
             LazyVStack{
                 ForEach(0..<10){_ in
-                    NotificationCell()
+                    UserCell()
                 }
             }
         }
     }
 }
 
-struct NotificationsView_Previews: PreviewProvider {
+struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        UserListView()
     }
 }
