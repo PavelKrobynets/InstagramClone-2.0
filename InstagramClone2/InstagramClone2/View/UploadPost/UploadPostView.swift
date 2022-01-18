@@ -12,8 +12,10 @@ struct UploadPostView: View {
     @State var postImage: Image?
     @State var captionText = ""
     @State var ImagePickerRepresented = false
+    @State var width = UIScreen.main.bounds.width
     
     var body: some View {
+        VStack{
         if postImage == nil{
             Button {
                 ImagePickerRepresented.toggle()
@@ -33,7 +35,7 @@ struct UploadPostView: View {
 
         }
         else if let image = postImage {
-            VStack{
+            VStack(spacing: 0){
                 HStack(alignment: .top){
                     image
                         .resizable()
@@ -41,20 +43,36 @@ struct UploadPostView: View {
                         .frame(width: 96, height: 96)
                         .clipped()
                     
-                    TextArea(text: $captionText, placeholder: "Enter your caption ")
+                    TextField("Enter your capton", text: $captionText)
                 }.padding()
+                
+                HStack{
+                    Button {
+                        postImage = nil
+                    } label: {
+                        Text("Back")
+                            .font(.system(size: 16, weight: .semibold))
+                            .frame(width: width / 3, height: 50)
+                            .background(Color.red)
+                            .cornerRadius(5)
+                            .foregroundColor(.white)
+                    }
                 Button {
                      
                 } label: {
                     Text("Share")
                         .font(.system(size: 16, weight: .semibold))
-                        .frame(width: 360, height: 50)
+                        .frame(width: width / 2.5, height: 50)
                         .background(Color.blue)
                         .cornerRadius(5)
                         .foregroundColor(.white)
                 }
                 
+                }
+                Spacer()
+                
             }
+        }
         }
     }
 }
@@ -67,3 +85,5 @@ extension UploadPostView {
         
     }
 }
+
+
