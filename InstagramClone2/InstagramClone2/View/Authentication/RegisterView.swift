@@ -12,6 +12,7 @@ struct RegisterView: View {
     @State var pass = ""
     @State var fullName = ""
     @State var userName = ""
+    @Environment (\.presentationMode) var mode
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color.purple, Color.red, Color.yellow],
@@ -42,17 +43,19 @@ struct RegisterView: View {
                 Spacer()
                 
                 Button {
-                    //
+                    mode.wrappedValue.dismiss()
                 } label: {
-                    Text("Don't have an account ?  ")
+                    Text("Already have an account ?  ")
                         .font(.system(size: 13)) +
-                    Text("Sign Up")
+                    Text("Sign In")
                         .font(.system(size: 14, weight: .semibold))
-                }.padding(.bottom, 40)
+                }
+                .padding(.bottom, 40)
                 
             }.padding(.top, 120)
         }.ignoresSafeArea()
             .foregroundColor(.white)
+            .navigationBarHidden(true)
     }
 }
 

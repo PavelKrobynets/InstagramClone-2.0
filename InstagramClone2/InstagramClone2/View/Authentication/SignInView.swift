@@ -11,6 +11,7 @@ struct SignInView: View {
     @State var email = ""
     @State var pass = ""
     var body: some View {
+        NavigationView{
         ZStack {
             LinearGradient(colors: [Color.purple, Color.red, Color.yellow],
                            startPoint: .topLeading,
@@ -49,18 +50,22 @@ struct SignInView: View {
                 
                 Spacer()
                 
-                Button {
-                    //
+                NavigationLink {
+                    RegisterView()
                 } label: {
+                    HStack{
                     Text("Don't have an account ?  ")
                         .font(.system(size: 13)) +
                     Text("Sign Up")
                         .font(.system(size: 14, weight: .semibold))
-                }.padding(.bottom, 40)
+                    }
+                    }.padding(.bottom, 40)
+
 
             }.foregroundColor(.white)
                 .padding(.top, 120)
         }.ignoresSafeArea()
+        }
     }
 }
 
