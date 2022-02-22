@@ -1,39 +1,33 @@
 //
-//  RegisterView.swift
+//  ForgotPasswordView.swift
 //  InstagramClone2
 //
-//  Created by Pavel Krobynets on 24.01.2022.
+//  Created by Pavel Krobynets on 22.02.2022.
 //
 
 import SwiftUI
 
-struct RegisterView: View {
-    @State var email = ""
-    @State var pass = ""
-    @State var fullName = ""
-    @State var userName = ""
+struct ForgotPasswordView: View {
     @Environment (\.presentationMode) var mode
+    @State private var email = ""
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color.purple, Color.red, Color.yellow],
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
-            VStack(spacing: 18){
+            VStack(spacing: 30){
                 Image("InstaLogo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 8)
+                    
                 
                 CustomTextField(placeholder: "Email", text: $email, image: "envelope")
-                CustomTextField(placeholder: "Username", text: $userName, image: "person")
-                CustomTextField(placeholder: "Full name", text: $fullName, image: "person")
-                CustomSecureField(pass: $pass, image: "lock", placeholder: "Password")
-                    .padding(.bottom)
                 
                 Button {
                     //
                 } label: {
-                    Text("Sign Up")
+                    Text("Reset password")
                 }.font(.headline)
                     .frame(width: UIScreen.main.bounds.width / 1.2,
                            height: UIScreen.main.bounds.height / 18)
@@ -51,16 +45,17 @@ struct RegisterView: View {
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .padding(.bottom, 40)
-                
-            }.padding(.top, 120)
+
+
+            }.foregroundColor(.white)
+                .padding(.top, 120)
         }.ignoresSafeArea()
-            .foregroundColor(.white)
             .navigationBarHidden(true)
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        ForgotPasswordView()
     }
 }

@@ -23,19 +23,22 @@ struct SignInView: View {
                     .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 8)
                     
                 
-                CustomtextField(placeholder: "Email", text: $email, image: "envelope")
+                CustomTextField(placeholder: "Email", text: $email, image: "envelope")
                 CustomSecureField(pass: $pass, image: "lock", placeholder: "Password")
                 
                 HStack{
                     Spacer()
                     
-                    Button {
-                        //
+                    NavigationLink {
+                        ForgotPasswordView()
                     } label: {
                         Text("Forgot the password ?")
-                    }.padding(.trailing)
+                    .padding(.trailing)
                         .padding(.vertical, 5)
                         .font(.system(size: 13, weight: .semibold))
+                    }
+
+                        
 
                 }
                 Button {
