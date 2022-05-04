@@ -13,6 +13,12 @@ struct RegisterView: View {
     @State var fullName = ""
     @State var userName = ""
     @Environment (\.presentationMode) var mode
+   @EnvironmentObject var ViewModel : AuthViewModel
+    
+    
+    //Check the observable object above next time  !!!!!
+    
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color.purple, Color.red, Color.yellow],
@@ -31,7 +37,7 @@ struct RegisterView: View {
                     .padding(.bottom)
                 
                 Button {
-                    //
+                    ViewModel.register(withEmail: email, password: pass, username: userName, fullname: fullName)
                 } label: {
                     Text("Sign Up")
                 }.font(.headline)
@@ -59,8 +65,3 @@ struct RegisterView: View {
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView()
-    }
-}
