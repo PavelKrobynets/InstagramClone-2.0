@@ -41,6 +41,7 @@
 		E8CAD96C2773442200ACDB5D /* PostGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD96B2773442200ACDB5D /* PostGridView.swift */; };
 		E8CAD96F2773463800ACDB5D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD96E2773463800ACDB5D /* SearchBar.swift */; };
 		E8CAD97127734BEB00ACDB5D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD97027734BEB00ACDB5D /* Extentions.swift */; };
+		E8F674C62822BE0700091805 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F674C52822BE0700091805 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		E8CAD96B2773442200ACDB5D /* PostGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridView.swift; sourceTree = "<group>"; };
 		E8CAD96E2773463800ACDB5D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E8CAD97027734BEB00ACDB5D /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		E8F674C52822BE0700091805 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = InstagramClone2/ViewModel/Authentication/User.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		E86853322770E0AC0056B543 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8F674C52822BE0700091805 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				04A71FFC2768EA00002586FA /* FeedView.swift in Sources */,
 				04A720002768EA18002586FA /* MainView.swift in Sources */,
 				04A71FF62768E9E8002586FA /* ProfileView.swift in Sources */,
+				E8F674C62822BE0700091805 /* User.swift in Sources */,
 				E85AD6BE2797086A00D14F06 /* ProfileInfo.swift in Sources */,
 				04A71FF82768E9F1002586FA /* NotificationsView.swift in Sources */,
 				E85AD6BC279705A000D14F06 /* ProfileHeaderView.swift in Sources */,

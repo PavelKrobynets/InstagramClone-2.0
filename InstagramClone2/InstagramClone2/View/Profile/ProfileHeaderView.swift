@@ -29,10 +29,12 @@ struct ProfileHeaderView: View {
             
             
             
-            Text("Hermione")
-                .font(.system(size: 14, weight: .semibold))
+            Text(AuthViewModel.shared.currentUser?.username ?? "User")
+                .font(.system(size: 16, weight: .semibold))
+                .padding(.leading, 12)
             Text("The best witch")
-                .font(.system(size: 13))
+                .font(.system(size: 14))
+                .padding(.leading, 4)
             
         }.foregroundColor(Color("TextColor"))
             .padding(.top)
