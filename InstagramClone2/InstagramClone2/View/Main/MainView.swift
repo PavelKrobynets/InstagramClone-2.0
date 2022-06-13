@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    let user: User
     @Binding var selectedIndex : Int
     var body: some View {
         NavigationView {
@@ -32,7 +33,7 @@ struct MainView: View {
                     .onTapGesture {
                         selectedIndex = 2
                     }
-                    .tabItem {
+                    .tabItem { 
                         Image(systemName: "plus.square")
                     }.tag(2)
                 
@@ -44,7 +45,7 @@ struct MainView: View {
                         Image(systemName: "heart")
                     }.tag(3)
                 
-                ProfileView()
+                ProfileView(user: user)
                     .onTapGesture {
                         selectedIndex = 4
                     }

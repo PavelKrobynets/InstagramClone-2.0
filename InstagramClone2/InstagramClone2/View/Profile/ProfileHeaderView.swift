@@ -6,17 +6,44 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileHeaderView: View {
+    @State var selectedImage : UIImage?
+    @State var userImage : Image?
+    @State var imagePickerRepresented = false
+    @ObservedObject var viewModel: ProfileViewModel
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack(spacing: 45) {
-                Image("Hermione")
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: 90, height: 90)
-                    .padding(.bottom, -5)
+                
+                if let imageURL = viewModel.user.profileImageURL{
+                        KFImage(URL(string: imageURL))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 90, height: 90)
+                            .padding(.bottom, -5)
+                    }
+                    else{
+                        Button {
+                            self.imagePickerRepresented.toggle()
+                        } label: {
+                            Image("ProfileImage")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 90, height: 90)
+                                .padding(.bottom, -5)
+                        }.sheet(isPresented: $imagePickerRepresented, onDismiss: loadImage) {
+                            ImagePicker(image: $selectedImage)
+                        }
+
+
+                    }
+                
+          
                 
                 HStack(spacing: 30){
                     
@@ -29,7 +56,7 @@ struct ProfileHeaderView: View {
             
             
             
-            Text(AuthViewModel.shared.currentUser?.username ?? "User")
+            Text(viewModel.user.fullname ?? "User")
                 .font(.system(size: 16, weight: .semibold))
                 .padding(.leading, 12)
             Text("The best witch")
@@ -41,8 +68,12 @@ struct ProfileHeaderView: View {
     }
 }
 
-struct ProfileHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileHeaderView()
+extension ProfileHeaderView {
+    func loadImage(){
+        guard let selectedImage = selectedImage else { return }
+        viewModel.changeProfileImage(image: selectedImage) { _ in
+            print("DEBUG: uploaded Image")
+        }
     }
 }
+
