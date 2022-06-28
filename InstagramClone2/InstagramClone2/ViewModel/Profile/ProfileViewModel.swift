@@ -14,30 +14,31 @@ class ProfileViewModel: ObservableObject{
     
     init(user: User){
         self.user = user
+        checkProfileImage()
+        
     }
     
     func changeProfileImage(image: UIImage, completinon: @escaping(String) -> Void){
-        guard let imageData = image.jpegData(compressionQuality:  0.5) else { return }
-        
-        let fileName = NSUUID().uuidString
-        let ref = Storage.storage().reference(withPath: "/profile_images/\(fileName)")
-        
-        ref.putData(imageData, metadata: nil) { (_, err) in
-            if let err = err{
-                print(err.localizedDescription)
-                print("DEBUG: failed uploading image")
+     
+        guard let uid = self.user.id else { return }
+        ImageUploader.upladImage(image: image, type: .profile) { imageURL in
+            
+          Firestore.firestore().collection("users").document(uid).updateData(["profileImageURL" : imageURL]) { err in
+                print(err?.localizedDescription ?? "")
                 return
             }
-            
-            ref.downloadURL { url, err in
-                if let err = err {
-                    print(err.localizedDescription)
-                    print("DEBUG: failed to upload url")
-                    return
-                }
-                guard let imageURL = url?.absoluteString else { return }
-            }
+            self.user.imagePicked = true
+        }
+        
+    
+    }
+    func checkProfileImage(){
+        if user.profileImageURL == nil{
+            self.user.imagePicked = false
+        }else{
+            self.user.imagePicked = true
         }
     }
 }
+
 

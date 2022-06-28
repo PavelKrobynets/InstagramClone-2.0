@@ -13,19 +13,26 @@ struct ProfileHeaderView: View {
     @State var userImage : Image?
     @State var imagePickerRepresented = false
     @ObservedObject var viewModel: ProfileViewModel
+    var imagePicked: Bool { return viewModel.user.imagePicked ?? false}
     
     var body: some View {
         VStack(alignment: .leading){
             HStack(spacing: 45) {
-                
-                if let imageURL = viewModel.user.profileImageURL{
-                        KFImage(URL(string: imageURL))
+                if imagePicked == true{
+                    Button {
+                        viewModel.user.imagePicked = false
+                        self.imagePickerRepresented.toggle()
+                    } label: {
+                        KFImage(URL(string: viewModel.user.profileImageURL ?? ""))
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())
                             .frame(width: 90, height: 90)
                             .padding(.bottom, -5)
+                    }.sheet(isPresented: $imagePickerRepresented, onDismiss: loadImage) {
+                        ImagePicker(image: $selectedImage)
                     }
+                }
                     else{
                         Button {
                             self.imagePickerRepresented.toggle()
@@ -56,15 +63,17 @@ struct ProfileHeaderView: View {
             
             
             
-            Text(viewModel.user.fullname ?? "User")
+            Text(viewModel.user.fullname)
                 .font(.system(size: 16, weight: .semibold))
-                .padding(.leading, 12)
+                .padding(.leading, 5)
             Text("The best witch")
                 .font(.system(size: 14))
                 .padding(.leading, 4)
-            
         }.foregroundColor(Color("TextColor"))
             .padding(.top)
+        
+        ProfileButtonView(viewModel: viewModel)
+            .padding(.bottom, 5)
     }
 }
 
