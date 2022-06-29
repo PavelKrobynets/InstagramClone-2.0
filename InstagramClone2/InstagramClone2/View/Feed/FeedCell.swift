@@ -6,27 +6,30 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FeedCell: View {
+    let post: Post
     var body: some View {
         VStack(alignment: .leading){
             HStack {
-                Image("Hermione")
+                KFImage(URL(string: post.ownerImageURL))
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
                 .frame(width: 45, height: 45)
                 .padding(.bottom, -5)
                 
-                Text("Hermione")
+                Text(post.ownerUsername)
                     .font(.system(size: 15, weight: .semibold))
             }
             .padding([.leading, .bottom], 8)
             
-            Image("Hermione")
+            KFImage(URL(string: post.imageURL))
                 .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
+                .scaledToFill()
+                .frame(maxHeight: 400)
+                .clipped()
                 
          // buttons
             HStack(spacing: 15){
@@ -52,13 +55,13 @@ struct FeedCell: View {
                 .padding([.leading, .top], 8)
                 .foregroundColor(Color(.darkGray))
             
-            Text("25 likes")
+            Text(post.likes == 1 ? "\(post.likes) like" : "\(post.likes) likes")
                 .font(.system(size: 14, weight: .bold ))
                 .padding(.leading, 8)
                 .padding(.vertical, 2)
             
             HStack{
-                Text("Hermione  ").font(.system(size: 14, weight: .semibold)) + Text("I like books")
+                Text(post.ownerUsername).font(.system(size: 14, weight: .semibold)) + Text(" \(post.caption)")
                     .font(.system(size: 14, weight: .regular ))
             }.padding(.horizontal, 8)
             
@@ -70,8 +73,4 @@ struct FeedCell: View {
     }
 }
 
-struct FeedCell_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedCell()
-    }
-}
+

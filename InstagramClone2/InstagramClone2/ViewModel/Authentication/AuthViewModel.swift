@@ -29,6 +29,7 @@ class AuthViewModel: ObservableObject {
             guard let user = result?.user else { return }
             
             self.userSession = user
+            self.fetchUser()
         }
     }
     
@@ -54,6 +55,7 @@ class AuthViewModel: ObservableObject {
                     return
                 }
                 self.userSession = user
+                self.fetchUser()
                 print("DEBUG: user was created ")
             
         }
@@ -63,6 +65,7 @@ class AuthViewModel: ObservableObject {
     func logOut(){
         self.userSession = nil
         try? Auth.auth().signOut()
+        print("DEBUG: logout completed")
     }
     
     func fetchUser() {

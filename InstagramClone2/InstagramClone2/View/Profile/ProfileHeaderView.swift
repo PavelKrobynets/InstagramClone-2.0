@@ -14,13 +14,12 @@ struct ProfileHeaderView: View {
     @State var imagePickerRepresented = false
     @ObservedObject var viewModel: ProfileViewModel
     var imagePicked: Bool { return viewModel.user.imagePicked ?? false}
-    
+
     var body: some View {
         VStack(alignment: .leading){
             HStack(spacing: 45) {
                 if imagePicked == true{
                     Button {
-                        viewModel.user.imagePicked = false
                         self.imagePickerRepresented.toggle()
                     } label: {
                         KFImage(URL(string: viewModel.user.profileImageURL ?? ""))

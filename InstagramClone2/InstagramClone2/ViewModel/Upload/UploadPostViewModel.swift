@@ -24,13 +24,14 @@ class UploadPostViewModel: ObservableObject{
                         "ownerUid": uid,
                         "ownerImageURL": imageUid,
                         "ownerUsername": user.username] as [String : Any]
-            Firestore.firestore().collection("posts").addDocument(data: data) { err in
+            COLLECTION_POSTS.addDocument(data: data) { err in
                 if let err = err{
                     print("DEBUG: Failed Post data uploading\(err.localizedDescription)")
                     return
                 }
+                
             }
-            
+            print("DEBUG: Post uploaded")
         }
     }
 }
