@@ -17,10 +17,6 @@ class SearchViewModel: ObservableObject{
     
     func fetchUsers(){
         COLLECTION_USERS.getDocuments { snap, err in
-            if let err = err {
-                print("DEBUG: failed fetching user for search bar with error \(err.localizedDescription)")
-                return
-            }
             guard let documents = snap?.documents else { return }
             self.users = documents.compactMap({try? $0.data(as: User.self)})
             print(self.users)

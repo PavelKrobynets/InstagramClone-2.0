@@ -21,7 +21,7 @@ struct SearchView: View {
                     UserListView(viewModel: viewModel, searchText: $text)
                 }
                 else{
-                    PostGridView()
+                    PostGridView(filter: .search)
                 }
             }
         }

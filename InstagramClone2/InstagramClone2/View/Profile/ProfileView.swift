@@ -13,7 +13,9 @@ struct ProfileView: View {
         ScrollView{
             VStack{
                 ProfileHeaderView(viewModel: ProfileViewModel(user: user))
-                PostGridView()
+                if let currentProfileId = user.id{
+                    PostGridView(filter: .profile(currentProfileId))
+                }
             }
         }
     }
