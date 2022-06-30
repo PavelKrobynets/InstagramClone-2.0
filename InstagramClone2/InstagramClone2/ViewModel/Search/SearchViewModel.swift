@@ -28,5 +28,7 @@ class SearchViewModel: ObservableObject{
         return users.filter({$0.fullname.lowercased().contains(lowercasedInput) ||
             $0.username.lowercased().contains(lowercasedInput)
         })
-    }
+        
+  
+}
 }

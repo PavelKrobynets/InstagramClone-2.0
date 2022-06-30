@@ -65,7 +65,7 @@ struct ProfileHeaderView: View {
             Text(viewModel.user.fullname)
                 .font(.system(size: 16, weight: .semibold))
                 .padding(.leading, 5)
-            Text("The best witch")
+            Text("Mugiwara")
                 .font(.system(size: 14))
                 .padding(.leading, 4)
         }.foregroundColor(Color("TextColor"))

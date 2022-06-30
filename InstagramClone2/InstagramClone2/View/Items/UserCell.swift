@@ -35,6 +35,7 @@ struct UserCell: View {
             }
             Spacer()
         }.padding(.leading)
+            .foregroundColor(.primary)
     }
 }
 

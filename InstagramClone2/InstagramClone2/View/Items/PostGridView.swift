@@ -23,11 +23,17 @@ struct PostGridView: View {
     var body: some View {
         LazyVGrid(columns: items, spacing: 2) {
             ForEach(viewModel.posts) { post in
-                KFImage(URL(string: post.imageURL))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: width , height: width)
-                    .clipped()
+                NavigationLink {
+                    FeedCell(viewModel: FeedCellViewModel(post: post))
+                } label: {
+                    KFImage(URL(string: post.imageURL))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width , height: width)
+                        .clipped()
+                }
+
+               
             }
         }
     }

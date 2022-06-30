@@ -22,6 +22,7 @@ struct SearchView: View {
                 }
                 else{
                     PostGridView(filter: .search)
+                    
                 }
             }
         }
