@@ -39,7 +39,7 @@ class GridViewModel: ObservableObject{
     func fetchPostsSearchPage(){
         COLLECTION_POSTS.getDocuments { snap, err in
             if let err = err {
-                print("DEBUG: Failed fatching post for grid with error\(err.localizedDescription)")
+                print("DEBUG: Failed fetching post for grid with error\(err.localizedDescription)")
                 return
             }
             guard let documents = snap?.documents else { return }
@@ -53,7 +53,7 @@ class GridViewModel: ObservableObject{
     func fetchPostProfilePage(withUid uid: String){
         COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid).getDocuments { snap, err in
             if let err = err {
-                print("DEBUG: Failed fatching post for grid with error\(err.localizedDescription)")
+                print("DEBUG: Failed fetching post for grid with error\(err.localizedDescription)")
                 return
             }
             guard let documents = snap?.documents else { return }

@@ -13,7 +13,7 @@ class UploadPostViewModel: ObservableObject{
     
     func uploadPost(image: UIImage, caption: String){
         guard let user = AuthViewModel.shared.currentUser else { return}
-        ImageUploader.upladImage(image: image, type: .post) { imageURL in
+        ImageUploader.uploadImage(image: image, type: .post) { imageURL in
             
             guard let uid = user.id else { return }
             guard let imageUid = user.profileImageURL else { return }

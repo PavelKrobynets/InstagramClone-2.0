@@ -23,6 +23,8 @@ class FeedCellViewModel: ObservableObject{
                 print("DEBUG: failed fetching user for feed cell with error\(err.localizedDescription)")
             }
             self.post.user = try? snap?.data(as: User.self)
+            guard let userImageURL = self.post.user?.profileImageURL else { return }
+            self.post.ownerImageURL = userImageURL
         }
     }
     
@@ -59,8 +61,7 @@ class FeedCellViewModel: ObservableObject{
         guard let postId = post.id else { return }
         guard let userId = AuthViewModel.shared.userSession?.uid else { return }
         
-        COLLECTION_POSTS
-            .document(postId).collection("post-likes")
+        COLLECTION_POSTS.document(postId).collection("post-likes")
             .document(userId).delete { err in
                 if let err = err{
                     print("DEBUG: Failed delete like \(err.localizedDescription)")

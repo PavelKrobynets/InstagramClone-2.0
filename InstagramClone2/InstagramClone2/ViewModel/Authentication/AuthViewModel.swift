@@ -49,7 +49,7 @@ class AuthViewModel: ObservableObject {
             
             ]
             
-            Firestore.firestore().collection("users").document(user.uid).setData(data) { err in
+            COLLECTION_USERS.document(user.uid).setData(data) { err in
                 if let err = err {
                     print(err.localizedDescription)
                     return
@@ -72,7 +72,7 @@ class AuthViewModel: ObservableObject {
         
         guard let uid = userSession?.uid else { return }
         
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, err in
+        COLLECTION_USERS.document(uid).getDocument { snapshot, err in
             if let err = err {
                 print(err.localizedDescription)
                 return

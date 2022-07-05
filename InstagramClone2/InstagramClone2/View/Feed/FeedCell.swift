@@ -19,7 +19,7 @@ struct FeedCell: View {
     var body: some View {
         VStack(alignment: .leading){
             if let user = viewModel.post.user{
-                NavigationLink(destination: ProfileView(user: user)){
+            NavigationLink(destination: ProfileView(user: user)){
                     HStack {
                         KFImage(URL(string: viewModel.post.ownerImageURL))
                             .resizable()
@@ -34,9 +34,9 @@ struct FeedCell: View {
                     }
                     .padding([.leading, .bottom], 8)
                 }
-            }else{
+            }else {
                 HStack {
-                    KFImage(URL(string: viewModel.post.ownerImageURL))
+                   Image("ProfileImage")
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
@@ -45,6 +45,7 @@ struct FeedCell: View {
                     
                     Text(viewModel.post.ownerUsername)
                         .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(.primary)
                 }
                 .padding([.leading, .bottom], 8)
             }

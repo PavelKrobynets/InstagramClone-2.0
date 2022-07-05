@@ -13,16 +13,16 @@ struct ProfileHeaderView: View {
     @State var userImage : Image?
     @State var imagePickerRepresented = false
     @ObservedObject var viewModel: ProfileViewModel
-    var imagePicked: Bool { return viewModel.user.imagePicked ?? false}
 
+  
     var body: some View {
         VStack(alignment: .leading){
             HStack(spacing: 45) {
-                if imagePicked == true{
+                if let profileImage = viewModel.user.profileImageURL {
                     Button {
                         self.imagePickerRepresented.toggle()
                     } label: {
-                        KFImage(URL(string: viewModel.user.profileImageURL ?? ""))
+                        KFImage(URL(string: profileImage))
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())

@@ -14,31 +14,36 @@ class ProfileViewModel: ObservableObject{
     
     init(user: User){
         self.user = user
-        checkProfileImage()
         
     }
     
-    func changeProfileImage(image: UIImage, completinon: @escaping(String) -> Void){
+    func changeProfileImage(image: UIImage, completion: @escaping(String) -> Void){
         
         guard let uid = self.user.id else { return }
-        ImageUploader.upladImage(image: image, type: .profile) { imageURL in
+        ImageUploader.uploadImage(image: image, type: .profile) { imageURL in
             
-            Firestore.firestore().collection("users").document(uid).updateData(["profileImageURL" : imageURL]) { err in
+            COLLECTION_USERS.document(uid).updateData(["profileImageURL" : imageURL]) { err in
                 print(err?.localizedDescription ?? "")
                 return
             }
-            self.user.imagePicked = true
+            self.user.profileImageURL = imageURL
         }
         
-        
     }
-    func checkProfileImage(){
-        if user.profileImageURL == nil{
-            self.user.imagePicked = false
-        }else{
-            self.user.imagePicked = true
+    
+    func follow(uid: String){
+        guard let uid = user.id else { return }
+        FollowControl.follow(uid: uid) { _ in
+       //     self.user.isFollowed = true
         }
     }
+    
+    func unfollow(){
+        
+    }
+    
+    func checkIfFollowed(){
+        
+    }
+    
 }
-
-
