@@ -30,7 +30,10 @@ struct FollowControl{
     static func checkIfUserIsFollowed(uid: String, completion: @escaping (Bool)->Void){
         guard let currentUid = AuthViewModel.shared.userSession?.uid else { return }
         
-        COLLECTION_FOLLOW.document(currentUid).collection("user-following").document(uid).getDocument { snap, _ in
+        COLLECTION_FOLLOW.document(currentUid).collection("user-following").document(uid).getDocument { snap, err in
+            if let err = err {
+                print("DEBUG: Failed checking follow with error \(err.localizedDescription)")
+            }
             guard let isFollowed = snap?.exists else { return }
             completion(isFollowed)
         }

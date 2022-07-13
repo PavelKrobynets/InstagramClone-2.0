@@ -13,7 +13,7 @@ struct ProfileHeaderView: View {
     @State var userImage : Image?
     @State var imagePickerRepresented = false
     @ObservedObject var viewModel: ProfileViewModel
-
+   
   
     var body: some View {
         VStack(alignment: .leading){
@@ -53,9 +53,9 @@ struct ProfileHeaderView: View {
                 
                 HStack(spacing: 30){
                     
-                    ProfileInfo(text: "posts", count: 6)
-                    ProfileInfo(text: "following", count: 299)
-                    ProfileInfo(text: "followers", count: 186)
+                    ProfileInfo(text: "posts", count: viewModel.user.stats?.posts ?? 0)
+                    ProfileInfo(text: "following", count: viewModel.user.stats?.following ?? 0)
+                    ProfileInfo(text: "followers", count: viewModel.user.stats?.followers ?? 0)
                     
                 }
             }

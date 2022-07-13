@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
 class ProfileViewModel: ObservableObject{
     
@@ -15,7 +16,7 @@ class ProfileViewModel: ObservableObject{
     init(user: User){
         self.user = user
         checkIfFollowed()
-        
+        checkStats()
     }
     
     func changeProfileImage(image: UIImage, completion: @escaping(String) -> Void){
@@ -42,7 +43,7 @@ class ProfileViewModel: ObservableObject{
     func unfollow(){
         guard let uid = user.id else { return }
         FollowControl.unFollow(uid: uid) { _ in
-            self.user.isFollowed = false 
+            self.user.isFollowed = false
         }
     }
     
@@ -54,4 +55,24 @@ class ProfileViewModel: ObservableObject{
         }
     }
     
+    func checkStats(){
+        guard let uid = user.id else { return }
+        
+        COLLECTION_FOLLOW.document(uid).collection("user-followers").getDocuments { snap, _ in
+            guard let followers = snap?.documents.count else { return }
+            
+            
+            COLLECTION_FOLLOW.document(uid).collection("user-following").getDocuments { snap, _ in
+                guard let following = snap?.documents.count else { return }
+              
+                
+                COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid).getDocuments { snap, _ in
+                    guard let posts = snap?.documents.count else { return }
+                  
+                    self.user.stats = User.UserStatsData(following: following, followers: followers, posts: posts)
+               
+                }
+            }
+        }
+    }
 }
