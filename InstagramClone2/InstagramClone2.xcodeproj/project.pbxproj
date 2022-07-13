@@ -53,6 +53,8 @@
 		E8CAD97127734BEB00ACDB5D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD97027734BEB00ACDB5D /* Extentions.swift */; };
 		E8E38E46285782AE00F1E52D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E38E45285782AE00F1E52D /* ProfileViewModel.swift */; };
 		E8F674C62822BE0700091805 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F674C52822BE0700091805 /* User.swift */; };
+		E8FFB322287EE4BC00BEE187 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FFB321287EE4BC00BEE187 /* NotificationsViewModel.swift */; };
+		E8FFB324287EE4FF00BEE187 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FFB323287EE4FF00BEE187 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		E8CAD97027734BEB00ACDB5D /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		E8E38E45285782AE00F1E52D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E8F674C52822BE0700091805 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = InstagramClone2/ViewModel/Authentication/User.swift; sourceTree = SOURCE_ROOT; };
+		E8FFB321287EE4BC00BEE187 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
+		E8FFB323287EE4FF00BEE187 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = InstagramClone2/ViewModel/Notifications/Notification.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 		E86853312770E0AA0056B543 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E8FFB320287EE49D00BEE187 /* Notifications */,
 				E88EF647286C7C290081D9A2 /* Items */,
 				E889822828228EEF00A004AF /* Profile */,
 				E889822728228EDF00A004AF /* Upload */,
@@ -254,6 +259,7 @@
 			children = (
 				E8F674C52822BE0700091805 /* User.swift */,
 				E88EF63D286C31F50081D9A2 /* Post.swift */,
+				E8FFB323287EE4FF00BEE187 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +342,14 @@
 				E83CA0072779EB3A00A2209E /* UserCell.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		E8FFB320287EE49D00BEE187 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E8FFB321287EE4BC00BEE187 /* NotificationsViewModel.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +456,7 @@
 				E83C80E0286D978700EF9601 /* FeedCellViewModel.swift in Sources */,
 				E86823A4279EB9230077893D /* RegisterView.swift in Sources */,
 				E83CA0082779EB3A00A2209E /* UserCell.swift in Sources */,
+				E8FFB324287EE4FF00BEE187 /* Notification.swift in Sources */,
 				04A71FFE2768EA09002586FA /* FeedCell.swift in Sources */,
 				E85582F327C54A61008C4F8C /* ForgotPasswordView.swift in Sources */,
 				04A71FFA2768E9FA002586FA /* SearchView.swift in Sources */,
@@ -449,6 +464,7 @@
 				E8CAD96C2773442200ACDB5D /* PostGridView.swift in Sources */,
 				E86823AA279EB95A0077893D /* SignInView.swift in Sources */,
 				E8CAD96F2773463800ACDB5D /* SearchBar.swift in Sources */,
+				E8FFB322287EE4BC00BEE187 /* NotificationsViewModel.swift in Sources */,
 				E88EF642286C33800081D9A2 /* Constats.swift in Sources */,
 				04A71FDB2768E958002586FA /* InstagramClone2App.swift in Sources */,
 				E889822A28228F0B00A004AF /* AuthViewModel.swift in Sources */,

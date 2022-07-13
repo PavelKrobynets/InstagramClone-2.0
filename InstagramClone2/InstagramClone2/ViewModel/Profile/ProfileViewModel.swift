@@ -38,6 +38,7 @@ class ProfileViewModel: ObservableObject{
         FollowControl.follow(uid: uid) { _ in
             self.user.isFollowed = true
         }
+        NotificationsViewModel.sendNotification(withUid: uid, type: .follow)
     }
     
     func unfollow(){
