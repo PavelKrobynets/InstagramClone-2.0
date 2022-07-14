@@ -65,6 +65,7 @@ struct NotificationCell: View {
             }
              
         }.padding(.horizontal, 4)
+        }
     }
-}
+
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct NotificationsView: View {
     @ObservedObject var viewModel = NotificationsViewModel()
     var body: some View {
+        VStack{
         ScrollView{
             LazyVStack{
                 ForEach(viewModel.notifications){ notification in
@@ -17,7 +18,19 @@ struct NotificationsView: View {
                 }
             }
         }
+            Button {
+                viewModel.deleteNotifications()
+            } label: {
+                Text("clear notifications")
+                    .padding(.horizontal,32)
+                    .padding(.vertical, 7)
+                    .foregroundColor(.white)
+                    .background(.blue)
+                    .clipShape(Capsule())
+                    .frame(alignment: .trailing)
+            }
     }
+  }
 }
 
 struct NotificationsView_Previews: PreviewProvider {
