@@ -18,6 +18,7 @@ struct ProfileHeaderView: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack(spacing: 45) {
+                if (viewModel.user.id != nil) == viewModel.user.isCurrentUser{
                 if let profileImage = viewModel.user.profileImageURL {
                     Button {
                         self.imagePickerRepresented.toggle()
@@ -45,10 +46,34 @@ struct ProfileHeaderView: View {
                         }.sheet(isPresented: $imagePickerRepresented, onDismiss: loadImage) {
                             ImagePicker(image: $selectedImage)
                         }
-
-
                     }
-                
+                }else{
+                    if let profileImage = viewModel.user.profileImageURL {
+                        KFImage(URL(string: profileImage))
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 90, height: 90)
+                                .padding(.bottom, -5)
+                        .sheet(isPresented: $imagePickerRepresented, onDismiss: loadImage) {
+                            ImagePicker(image: $selectedImage)
+                        }
+                    }
+                        else{
+                            Button {
+                                self.imagePickerRepresented.toggle()
+                            } label: {
+                                Image("ProfileImage")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                                    .frame(width: 90, height: 90)
+                                    .padding(.bottom, -5)
+                            }.sheet(isPresented: $imagePickerRepresented, onDismiss: loadImage) {
+                                ImagePicker(image: $selectedImage)
+                            }
+                        }
+                }
           
                 
                 HStack(spacing: 30){

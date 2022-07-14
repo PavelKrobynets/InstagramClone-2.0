@@ -14,7 +14,10 @@ struct FollowControl{
     static func follow(uid: String, completion: ((Error?)-> Void)?){
           guard let currentUid = AuthViewModel.shared.userSession?.uid else { return }
         
-        COLLECTION_FOLLOW.document(currentUid).collection("user-following").document(uid).setData([:]){ _ in
+        COLLECTION_FOLLOW.document(currentUid).collection("user-following").document(uid).setData([:]){ err in
+            if let err = err {
+                print("DEBUG: Failed following user with error \(err.localizedDescription)")
+            }
                  COLLECTION_FOLLOW.document(uid).collection("user-followers").document(currentUid).setData([:], completion: completion)
         }
     }
