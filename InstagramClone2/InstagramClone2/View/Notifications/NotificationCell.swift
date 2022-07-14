@@ -6,40 +6,63 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NotificationCell: View {
+    @ObservedObject var viewModel: NotificationsCellViewModel
+    
+    init(viewModel: NotificationsCellViewModel){
+        self.viewModel = viewModel
+    }
     var body: some View {
         HStack{
-            Image("Hermione")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-            
-            Text("Hermione: ")
-                .font(.system(size: 14, weight: .semibold))
-            + Text("followed you.").font(.system(size: 15))
-            + Text("2h").foregroundColor(.gray).font(.system(size: 12))
-            
+//            if let user = notification.user{
+//                NavigationLink {
+//                    ProfileView(user: user)
+//                } label: {
+            if let imageURL = viewModel.notification.profileImageURL {
+                    KFImage(URL(string: imageURL))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    }else{
+                        Image("ProfileImage")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                    }
+            Text("\(viewModel.notification.username): ")
+                        .font(.system(size: 14, weight: .semibold))
+            + Text("\(viewModel.notification.type.notificationsMessage) ").font(.system(size: 15))
+            + Text(viewModel.timestamp).foregroundColor(.gray).font(.system(size: 12))
+//                }
+//            }
             Spacer()
             
-            Button {
-                //
-            } label: {
-                Text("follow")
-                        .padding(.horizontal,32)
-                        .padding(.vertical, 7)
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .clipShape(Capsule())
+            if  viewModel.notification.type == .follow {
+                Button {
+                    //
+                } label: {
+                    Text("follow")
+                            .padding(.horizontal,32)
+                            .padding(.vertical, 7)
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .clipShape(Capsule())
+                }
+            }else{
+                if let post = viewModel.notification.post{
+                    KFImage(URL(string: post.imageURL))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipped()
+                }
             }
              
         }.padding(.horizontal, 4)
     }
 }
 
-struct NotificationCell_Previews: PreviewProvider {
-    static var previews: some View {
-        NotificationCell()
-    }
-}

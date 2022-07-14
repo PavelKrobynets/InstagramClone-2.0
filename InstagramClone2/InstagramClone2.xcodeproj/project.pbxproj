@@ -48,6 +48,7 @@
 		E88EF642286C33800081D9A2 /* Constats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88EF641286C33800081D9A2 /* Constats.swift */; };
 		E88EF646286C4AE90081D9A2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88EF645286C4AE90081D9A2 /* SearchViewModel.swift */; };
 		E88EF649286C7C530081D9A2 /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88EF648286C7C530081D9A2 /* GridViewModel.swift */; };
+		E8A2B8B828801EAF00FD4475 /* NotificationsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2B8B728801EAF00FD4475 /* NotificationsCellViewModel.swift */; };
 		E8CAD96C2773442200ACDB5D /* PostGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD96B2773442200ACDB5D /* PostGridView.swift */; };
 		E8CAD96F2773463800ACDB5D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD96E2773463800ACDB5D /* SearchBar.swift */; };
 		E8CAD97127734BEB00ACDB5D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CAD97027734BEB00ACDB5D /* Extentions.swift */; };
@@ -93,6 +94,7 @@
 		E88EF641286C33800081D9A2 /* Constats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constats.swift; sourceTree = "<group>"; };
 		E88EF645286C4AE90081D9A2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E88EF648286C7C530081D9A2 /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
+		E8A2B8B728801EAF00FD4475 /* NotificationsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellViewModel.swift; sourceTree = "<group>"; };
 		E8CAD96B2773442200ACDB5D /* PostGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridView.swift; sourceTree = "<group>"; };
 		E8CAD96E2773463800ACDB5D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E8CAD97027734BEB00ACDB5D /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				E8FFB321287EE4BC00BEE187 /* NotificationsViewModel.swift */,
+				E8A2B8B728801EAF00FD4475 /* NotificationsCellViewModel.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				E8CAD96C2773442200ACDB5D /* PostGridView.swift in Sources */,
 				E86823AA279EB95A0077893D /* SignInView.swift in Sources */,
 				E8CAD96F2773463800ACDB5D /* SearchBar.swift in Sources */,
+				E8A2B8B828801EAF00FD4475 /* NotificationsCellViewModel.swift in Sources */,
 				E8FFB322287EE4BC00BEE187 /* NotificationsViewModel.swift in Sources */,
 				E88EF642286C33800081D9A2 /* Constats.swift in Sources */,
 				04A71FDB2768E958002586FA /* InstagramClone2App.swift in Sources */,
