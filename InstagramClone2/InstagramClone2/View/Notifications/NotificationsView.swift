@@ -18,17 +18,6 @@ struct NotificationsView: View {
                 }
             }
         }
-            Button {
-                viewModel.deleteNotifications()
-            } label: {
-                Text("clear notifications")
-                    .padding(.horizontal,32)
-                    .padding(.vertical, 7)
-                    .foregroundColor(.white)
-                    .background(.blue)
-                    .clipShape(Capsule())
-                    .frame(alignment: .trailing)
-            }
     }
   }
 }

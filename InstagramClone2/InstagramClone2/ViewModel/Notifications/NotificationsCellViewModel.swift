@@ -17,6 +17,7 @@ class NotificationsCellViewModel: ObservableObject {
         self.notification = notification
         fetchUser()
         fetchPost()
+        checkIfFollowed()
     }
     
     
@@ -43,6 +44,26 @@ class NotificationsCellViewModel: ObservableObject {
             }
             self.notification.post = try? snap?.data(as: Post.self)
             print("DEBUG : POST FATCHED !!!!!")
+        }
+    }
+    
+    func follow(){
+        FollowControl.follow(uid: notification.uid) { _ in
+            self.notification.isFollowed = true
+        }
+        NotificationsViewModel.sendNotification(withUid: notification.uid, type: .follow)
+    }
+    
+    func unfollow(){
+        FollowControl.unFollow(uid: notification.uid) { _ in
+            self.notification.isFollowed = false
+        }
+    }
+    
+    func checkIfFollowed(){
+        guard  notification.type == .follow else { return }
+        FollowControl.checkIfUserIsFollowed(uid: notification.uid) { isFollowed in
+            self.notification.isFollowed = isFollowed
         }
     }
 }

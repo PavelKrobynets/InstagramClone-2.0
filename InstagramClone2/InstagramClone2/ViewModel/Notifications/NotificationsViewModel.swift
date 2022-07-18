@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
 class NotificationsViewModel: ObservableObject{
     @Published var notifications = [Notification]()
@@ -38,17 +39,6 @@ class NotificationsViewModel: ObservableObject{
             }
         }
     }
-
-    func deleteNotifications(){
-        guard let userId = AuthViewModel.shared.userSession?.uid else { return }
-        
-        COLLECTION_NOTIFICATIONS.document(userId).collection("user-notifications").document().delete() { err in
-            if let err = err {
-                print ("DEBUG: Failed clearing notifications with error \(err.localizedDescription)")
-            }
-            print("CLEAR SECCESFULLY")
-        }
-    }
  
      
     func fetchNotifications() {
@@ -64,4 +54,16 @@ class NotificationsViewModel: ObservableObject{
             self.notifications = documents.compactMap({ try? $0.data(as: Notification.self)})
         }
     }
+    
+//    func deleteNotification(notification: Notification){
+//        guard let userId = AuthViewModel.shared.currentUser?.id else { return }
+//        guard let notificationId = notification.id else { return }
+//
+//        COLLECTION_NOTIFICATIONS.document(userId).collection("user-notifications").document(notificationId).delete(){ err in
+//            if let err = err {
+//                print ("DEBUG: Failed clearing notifications with error \(err.localizedDescription)")
+//            }
+//            print("CLEAR SUCCESSFULLY")
+//        }
+//    }
 }

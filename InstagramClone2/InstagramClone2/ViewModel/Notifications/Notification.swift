@@ -21,7 +21,7 @@ struct Notification: Decodable, Identifiable {
     
     var post: Post?
     var user: User?
-    var didFollow: Bool? = false
+    var isFollowed: Bool? = false
 }
 
 enum NotificationType: Int, Decodable {
